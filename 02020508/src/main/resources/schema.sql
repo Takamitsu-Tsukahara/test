@@ -1,0 +1,4 @@
+DROP TABLE IF EXISTS data;
+CREATE TABLE data
+	(dayData date)
+ENGINE=InnoDB DEFAULT CHARSET=utf8;

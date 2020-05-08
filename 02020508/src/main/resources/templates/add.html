@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link href="/index.css" rel="stylesheet"></link>
+	<title>Insert title here</title>
+</head>
+<body>
+	<h1>年月日</h1>
+	<form th:action="@{/add{userYear}{userMonth}{userDay}}"th:object="${Request}" method="post">
+		<table>
+			<tr>
+				<th th:text="${modelYear}">年</th>
+				<th th:text="${modelMonth}">月</th>
+				<th th:text="${modelDay}">日</th>
+				<th th:text="${modelWeek}">曜日</th>
+			</tr>
+			<tr>
+			<th>年</th><th>月</th><th>日</th><th>曜日</th>
+			</tr>
+			<tr>
+				<td><input type="number" th:field="*{userYear}"></td>
+				<td><input type="number" th:field="*{userMonth}"></td>
+				<td><input type="number" th:field="*{userDay}"></td>
+				<th></th>
+			</tr>
+		</table>
+		<div><input type="submit" value="登録" class="btn"></div>
+	</form>
+
+</body>
+</html>
