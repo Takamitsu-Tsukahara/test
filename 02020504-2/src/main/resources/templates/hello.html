@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link href="/hello.css" rel="stylesheet"></link>
+<title>Welcome!</title>
+</head>
+<body>
+	<h1>Welcome!</h1>
+	<div>
+		<p>
+			<span th:text="${outContoroller}"></span>
+		</p>
+		<p>
+			<span th:text="${dataUserInfo}" ></span>
+		</p>
+	</div>
+
+	<div>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>名前</th>
+					<th>性別</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user : ${dataUserInfo}" th:object="${user}">
+					<td th:text="*{id}"></td>
+					<td th:text="*{name}"></td>
+					<td th:text="*{gender}"></td>
+					<td><a th:href="@{/{id}(id=*{id})}">詳細+編集</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div>
+		<h1>ユーザー新規登録</h1>
+  		<form th:action="@{/create}" th:object="${requestData}" method="post">
+			<table>
+				<tr>
+					<th>名前</th>
+					<td><input type="text" th:field="*{name}"></td>
+				</tr>
+				<tr>
+					<th>性別</th>
+					<td><input type="text" th:field="*{gender}"></td>
+				</tr>
+			</table>
+			<div><input type="submit" value="登録" class="btn"></div>
+		</form>
+	</div>
+</body>
+</html>

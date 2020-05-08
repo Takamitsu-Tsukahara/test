@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>ユーザー情報詳細</title>
+		<link href="/css/add.css" rel="stylesheet"></link>
+		<meta charset="utf-8" />
+	</head>
+	<body>
+		<h1>ユーザー情報詳細</h1>
+		<table th:object="${userRequest}">
+			<tr>
+				<th>ID</th>
+				<td th:text="*{id}"></td>
+			</tr>
+			<tr>
+				<th>名前</th>
+				<td th:text="*{name}"></td>
+			</tr>
+			<tr>
+				<th>性別</th>
+				<td th:text="*{gender}"></td>
+			</tr>
+		</table>
+
+
+		<div>
+			<h1>ユーザー編集</h1>
+  			<form th:action="@{/updata}" th:object="${updateRequestData}" method="post">
+  				<a th:href="@{/{id}(id=*{id})}">キャンセル</a>
+				<input type="hidden" th:field="*{id}" />
+					<table>
+						<tr>
+							<th>名前</th>
+							<td><input type="text" th:field="*{name}"></td>
+						</tr>
+						<tr>
+							<th>性別</th>
+							<td><input type="text" th:field="*{gender}"></td>
+						</tr>
+					</table>
+				<div><input type="submit" value="保存" class="btn"></div>
+			</form>
+		</div>
+
+
+		<div>
+			<a th:href="@{/delete{id}}">削除</a>
+		</div>
+		<div>
+			<a href="/">一覧に戻る</a>
+		</div>
+	</body>
+</html>
