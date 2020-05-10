@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>demo</title>
+<link href="/index.css" rel="stylesheet"></link>
+</head>
+<body>
+	<p>
+		<label>前回の数字：</label> <label th:text="${msg}">前回の数字</label>
+	</p>
+
+	<p>
+		<label>現在＋〇年：</label> <label th:text="${year}">前回の数字</label>
+	</p>
+
+	<form action="#" th:action="@{/confirm}" method="GET">
+		<p>
+			<label for="numb"> + 年 ：</label> <input id="numb" name="msg"
+				type="number" size="40" />
+		</p>
+		<p>
+			<input type="submit" value="送信" />
+		</p>
+	</form>
+
+
+	<table>
+		<tr>
+			<th>年</th>
+			<th>月</th>
+			<th>日</th>
+			<th>曜日</th>
+		</tr>
+		<tr>
+			<th th:text="${modelYear}">年</th>
+			<th th:text="${modelMonth}">月</th>
+			<th th:text="${modelDay}">日</th>
+			<th th:text="${modelWeek}">曜日</th>
+		</tr>
+	</table>
+</body>
+</html>
